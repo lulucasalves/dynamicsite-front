@@ -29,7 +29,9 @@ const App = () => {
 
         const actionClick = newAction({ type: "click", id });
 
-        const ws = new WebSocket("ws://localhost:8080");
+        const ws = new WebSocket(
+          "wss://node-websocket-server-c91a.onrender.com"
+        );
         ws.onopen = () => {
           ws.send(JSON.stringify([actionClick]));
         };
@@ -68,7 +70,7 @@ const App = () => {
 
   const sendMessage = async () => {
     if (actions.length) {
-      const ws = new WebSocket("ws://localhost:8080");
+      const ws = new WebSocket("wss://node-websocket-server-c91a.onrender.com");
       ws.onopen = () => {
         ws.send(JSON.stringify(actions));
       };
